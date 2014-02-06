@@ -1,3 +1,0 @@
-title=Dialer
-author=Asa Akira
-orientation=portrait
