@@ -1,4 +1,5 @@
 from kivy.app import App
+from jnius import cast
 from jnius import autoclass
 
 def b():
@@ -7,15 +8,10 @@ def b():
 	import pdb;pdb.set_trace()
 		
 class DialerApp(App):
-	title = "Dialer"
-	icon = "icon.png"
 
 	def on_pause(self):
 		return True
 
-	def switchPane(self, pane):
-		print "switchPane() " + pane
-	
 	def appendNum(self, num):
 		self.root.ids.phoneNum.insert_text(num)		
 
@@ -23,12 +19,18 @@ class DialerApp(App):
 		self.root.ids.phoneNum.do_backspace()
 
 	def callNum(self):
-		print "callNum(): " + self.root.ids.phoneNum.text
+		number =  self.root.ids.phoneNum.text
 
-		intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+		print "callNum(): " + number 
+
+		PythonActivity = autoclass('org.renpy.android.PythonActivity')
+		Intent = autoclass('android.content.Intent')
+		Uri = autoclass('android.net.Uri')
+
+		intent = Intent(Intent.ACTION_CALL)
+		intent.setData(Uri.parse("tel:" + number))
 		currentActivity = cast('android.app.Activity', PythonActivity.mActivity)
  		currentActivity.startActivity(intent)
-
 
 
 if __name__ == '__main__':

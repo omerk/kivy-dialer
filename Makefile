@@ -1,13 +1,16 @@
+all: build install
+
 build:
 	buildozer android debug
 
-install: push
-
-push: build
+install:
 	adb install -r  bin/*.apk
 
 debug:
 	adb logcat
+
+run:
+	python main.py
 
 clean:
 	buildozer clean
