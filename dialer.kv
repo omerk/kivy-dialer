@@ -9,6 +9,28 @@
 		pos: root.pos
 		size: root.size
 
+<ContactEntry@BoxLayout>:
+	cname: ""
+	source: None
+
+	BoxLayout
+		orientation: 'horizontal'
+
+		Image:
+			source: root.source
+				
+		BoxLayout:	
+			orientation: 'vertical'
+			
+			Label:
+				text: "contact 1"
+
+			Label:
+				text: root.cname
+
+			Label:
+				text: "line 3"
+
 # the actual layout
 AnchorLayout:
 	anchor_x: 'center'
@@ -19,12 +41,89 @@ AnchorLayout:
 		id: _screen_manager
 		#HACK: NoTransition available in >1.8.0, pip stable is 1.7.2
 		transition: FadeTransition(duration=0.001)
- 
+
+		# contacts screen 
 		Screen:
 			name: 'screenContacts'
-			Label: 
-				text: 'contacts'
+		
+			ScrollView:			
+				size_hint: None, None
 
+				GridLayout:
+					cols: 1
+					spacing: 10
+					size_hint_y: None
+
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					Label:
+						text: "foo"
+					#ContactEntry:
+					#	source: 'assets/contacts.png'
+					#	cname: "Foo Bar"
+					#	cnumber: "12332142234234"
+
+		# numpad screen
 		Screen:
 			name: 'screenNumpad'
 
